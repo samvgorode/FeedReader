@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorCounterChannels">#50c3e3</color>
+    <color name="colorRemoveItem">#4a90e2</color>
+    <color name="colorBottomOfList">#4a90e2</color>
+    <color name="colorTransparent">#00ffffff</color>
+    <color name="colorTextSelectedTab">#4a90e2</color>
+    <color name="colorTextUnelectedTab">#ffffff</color>
+    <color name="colorBadgeGreyFont">#1d395b</color>
+</resources>
