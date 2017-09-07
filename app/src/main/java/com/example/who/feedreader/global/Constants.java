@@ -6,4 +6,6 @@ package com.example.who.feedreader.global;
 
 public class Constants {
     public static final String URL_TO_LOAD = "URL_TO_LOAD";
+    public static final String FIRST_MAP_OF_ITEMS = "FIRST_MAP_OF_ITEMS";
+    public static final String ITEMS_DELETED = "ITEMS_DELETED";
 }

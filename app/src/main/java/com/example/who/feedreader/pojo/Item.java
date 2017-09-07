@@ -7,17 +7,17 @@ package com.example.who.feedreader.pojo;
 
 public class Item {
 
-    public String id;
+    private String id;
 
-    public String title;
+    private String title;
 
-    public String link;
+    private String link;
 
-    public String pubDate;
+    private String pubDate;
 
-    public String author;
+    private String author;
 
-    public String image;
+    private String image;
 
     public Item() {
     }

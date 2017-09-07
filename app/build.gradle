@@ -40,6 +40,7 @@ dependencies {
     compile 'org.jsoup:jsoup:1.10.3'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
+    compile 'com.orhanobut:hawk:2.0.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }

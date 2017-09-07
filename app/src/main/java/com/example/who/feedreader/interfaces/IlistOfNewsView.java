@@ -9,6 +9,7 @@ import java.util.List;
  */
 
 public interface IlistOfNewsView {
+
     void updateAdapter();
 
     void onBack();

@@ -30,7 +30,7 @@
                     android:layout_width="142dp"
                     android:layout_height="90dp"
                     android:background="@color/colorRemoveItem"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:focusable="false"/>
 
                 <TextView

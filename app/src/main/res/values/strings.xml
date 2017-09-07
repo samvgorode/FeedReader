@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FeedReader</string>
     <string name="remove">remove</string>
+    <string name="abort_deleting">Abort deleting</string>
 </resources>

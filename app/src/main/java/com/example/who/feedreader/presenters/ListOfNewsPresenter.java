@@ -1,20 +1,21 @@
 package com.example.who.feedreader.presenters;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Handler;
-import android.text.Html;
 import android.util.Log;
 import android.util.Patterns;
+import android.widget.Toast;
 
 import com.example.who.feedreader.interfaces.IlistOfNewsView;
 import com.example.who.feedreader.pojo.Item;
+import com.orhanobut.hawk.Hawk;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.w3c.dom.NodeList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +24,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 
-import static android.text.Html.FROM_HTML_MODE_LEGACY;
+import static com.example.who.feedreader.global.Constants.FIRST_MAP_OF_ITEMS;
+import static com.example.who.feedreader.global.Constants.ITEMS_DELETED;
 
 /**
  * Created by who on 06.09.2017.
@@ -32,12 +34,8 @@ import static android.text.Html.FROM_HTML_MODE_LEGACY;
 public class ListOfNewsPresenter {
 
     private static final String TAG = ListOfNewsPresenter.class.getSimpleName();
-
-    private List<Item> data = new ArrayList<>();
-
     private Context mContext;
     private IlistOfNewsView view;
-    private String xmlChannel;
 
     public ListOfNewsPresenter(Context context, IlistOfNewsView view) {
         this.mContext = context;
@@ -46,6 +44,7 @@ public class ListOfNewsPresenter {
     }
 
     private void initList() {
+        Hawk.init(mContext).build();
         new Handler().post(new Runnable() {
             @Override
             public void run() {
@@ -56,13 +55,28 @@ public class ListOfNewsPresenter {
     }
 
     private void getData() {
-
-        new RetrieveFeedTask().execute();
+        if (isNetworkConnected()) {
+            new RetrieveFeedTask().execute();
+        } else {
+            List<Item> data = new ArrayList<>();
+            Map<String, Item> mapFromInet = new HashMap<>();
+            mapFromInet = Hawk.get(FIRST_MAP_OF_ITEMS);
+            if (mapFromInet.size() > 0) {
+                for (String key : mapFromInet.keySet()) {
+                    data.add(mapFromInet.get(key));
+                    view.setDataToAdapter(data);
+                }
+            } else {
+                Toast.makeText(mContext, "No data offline", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
-    class RetrieveFeedTask extends AsyncTask<Void, Void, List<Item>> {
+    private class RetrieveFeedTask extends AsyncTask<Void, Void, List<Item>> {
 
         List<Item> list = new ArrayList<>();
+        Map<String, Item> mapFromInet = new HashMap<>();
+        Map<String, Item> mapDeleted = new HashMap<>();
         private Exception exception;
 
         protected List<Item> doInBackground(Void... urls) {
@@ -91,8 +105,15 @@ public class ListOfNewsPresenter {
                         item.setAuthor(author);
                         item.setImage(imageLink);
                         item.setPubDate(pubDate);
-                        list.add(item);
+//                        list.add(item);
 
+                        mapDeleted = Hawk.get(ITEMS_DELETED);
+                        if (!mapDeleted.containsKey(id)) mapFromInet.put(id, item);
+
+                    }
+                    Hawk.put(FIRST_MAP_OF_ITEMS, mapFromInet);
+                    for (String key : mapFromInet.keySet()) {
+                        list.add(mapFromInet.get(key));
                     }
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
@@ -120,5 +141,10 @@ public class ListOfNewsPresenter {
         }
 
         return links.toArray(new String[links.size()]);
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
     }
 }

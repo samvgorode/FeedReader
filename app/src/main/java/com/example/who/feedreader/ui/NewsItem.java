@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.example.who.feedreader.R;
+import com.example.who.feedreader.R2;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.example.who.feedreader.global.Constants.URL_TO_LOAD;
 
@@ -20,7 +23,7 @@ import static com.example.who.feedreader.global.Constants.URL_TO_LOAD;
 public class NewsItem extends AppCompatActivity {
 
     @BindView(R.id.wwNewBody)
-    WebView wwNewBody;
+    public WebView wwNewBody;
 
     public static Intent getNewIntent(Context context, String url) {
         Intent intent = new Intent(context, NewsItem.class);
@@ -32,6 +35,8 @@ public class NewsItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_item);
+        ButterKnife.bind(this);
+//        wwNewBody = (WebView)findViewById(R.id.wwNewBody);
         fetchIntent();
     }
 
@@ -40,7 +45,7 @@ public class NewsItem extends AppCompatActivity {
         if(intent.hasExtra(URL_TO_LOAD)){
             String url = intent.getStringExtra(URL_TO_LOAD);
             if(!TextUtils.isEmpty(url)){
-                wwNewBody.getSettings().setJavaScriptEnabled(true);
+                wwNewBody.setWebViewClient(new WebViewClient());
                 wwNewBody.loadUrl(url);
             }
         }
