@@ -7,19 +7,19 @@
     <com.daimajia.swipe.SwipeLayout
         android:id="@+id/rootSwipeLayout"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="110dp"
         android:clickable="true">
         <!-- Bottom View Start-->
         <RelativeLayout
             android:id="@+id/rlBottomWrapper"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:clickable="false">
 
             <RelativeLayout
                 android:id="@+id/rlRemoveItem"
                 android:layout_width="142dp"
-                android:layout_height="90dp"
+                android:layout_height="110dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:clickable="false"
@@ -28,7 +28,7 @@
                 <ImageView
                     android:id="@+id/ivRemoveItem"
                     android:layout_width="142dp"
-                    android:layout_height="90dp"
+                    android:layout_height="110dp"
                     android:background="@color/colorRemoveItem"
                     android:clickable="true"
                     android:focusable="false"/>
@@ -49,26 +49,21 @@
 
             <ImageView
                 android:id="@+id/ivChannelsContactProfileBottom"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="11dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="11dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_margin="10dp"
                 android:layout_toEndOf="@id/rlRemoveItem"
                 android:layout_toRightOf="@id/rlRemoveItem"
                 android:clickable="false"
-                android:focusable="false"/>
+                android:focusable="false"
+                android:scaleType="fitXY" />
 
             <TextView
                 android:id="@+id/tvChannelsContactNameBottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="45.5dp"
-                android:layout_marginTop="23.5dp"
+                android:layout_marginTop="5dp"
                 android:layout_toEndOf="@id/ivChannelsContactProfileBottom"
                 android:layout_toRightOf="@id/ivChannelsContactProfileBottom"
                 android:fontFamily="sans-serif-medium"
@@ -77,14 +72,27 @@
                 android:textSize="18sp"
                 android:textStyle="normal"
                 android:clickable="false"
+                android:focusable="false"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:id="@+id/tvChannelsTimeOfMessageBottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/ivChannelsContactProfileBottom"
+                android:layout_toRightOf="@id/ivChannelsContactProfileBottom"
+                android:layout_below="@+id/tvChannelsContactNameBottom"
+                android:clickable="false"
                 android:focusable="false"/>
 
             <TextView
                 android:id="@+id/tvChannelsContactLastMessageBottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="19dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tvChannelsTimeOfMessageBottom"
                 android:layout_toEndOf="@id/ivChannelsContactProfileBottom"
                 android:layout_toRightOf="@id/ivChannelsContactProfileBottom"
                 android:fontFamily="sans-serif"
@@ -99,31 +107,26 @@
         <!-- Surface View Start -->
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="110dp"
             android:clickable="false">
 
             <ImageView
                 android:id="@+id/ivChannelsContactProfile"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="11dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="11dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="10dp"
+                android:layout_margin="10dp"
                 android:clickable="false"
-                android:focusable="false"/>
+                android:focusable="false"
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/tvChannelsContactName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="45.5dp"
-                android:layout_marginTop="23.5dp"
+                android:layout_marginTop="5dp"
                 android:layout_toEndOf="@id/ivChannelsContactProfile"
                 android:layout_toRightOf="@id/ivChannelsContactProfile"
                 android:fontFamily="sans-serif-medium"
@@ -132,14 +135,25 @@
                 android:textSize="18sp"
                 android:textStyle="normal"
                 android:clickable="false"
+                android:focusable="false"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+            <TextView
+                android:id="@+id/tvChannelsTimeOfMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tvChannelsContactName"
+                android:layout_toEndOf="@id/ivChannelsContactProfile"
+                android:layout_toRightOf="@id/ivChannelsContactProfile"
+                android:clickable="false"
                 android:focusable="false"/>
-
             <TextView
                 android:id="@+id/tvChannelsContactLastMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="19dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tvChannelsTimeOfMessage"
                 android:layout_toEndOf="@id/ivChannelsContactProfile"
                 android:layout_toRightOf="@id/ivChannelsContactProfile"
                 android:fontFamily="sans-serif"
@@ -150,18 +164,7 @@
                 android:clickable="false"
                 android:focusable="false"/>
 
-            <TextView
-                android:id="@+id/tvChannelsTimeOfMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="15dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginBottom="64dp"
-                android:layout_marginEnd="54dp"
-                android:layout_marginRight="54dp"
-                android:layout_marginTop="11dp"
-                android:clickable="false"
-                android:focusable="false"/>
+
         </RelativeLayout>
         <!-- Surface View End -->
     </com.daimajia.swipe.SwipeLayout>

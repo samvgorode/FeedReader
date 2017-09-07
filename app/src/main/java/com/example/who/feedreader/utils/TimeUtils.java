@@ -11,7 +11,7 @@ import java.util.Locale;
 public class TimeUtils {
     public static String getNormalizedTime(String oldTime) {
         SimpleDateFormat fromUser = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH);
-        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy, dd MMMMM HH:mm", Locale.ENGLISH);
+        SimpleDateFormat myFormat = new SimpleDateFormat("HH:mm dd MMMM yyyy", Locale.ENGLISH);
         String reformattedStr = "";
         try {
             reformattedStr = myFormat.format(fromUser.parse(oldTime));

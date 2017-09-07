@@ -71,6 +71,8 @@ public class ListOfNewsItemView extends RelativeLayout {
     TextView tvAuthorOfNewBottom;
     @BindView(R.id.tvChannelsTimeOfMessage)
     TextView tvTimeOfNew;
+    @BindView(R.id.tvChannelsTimeOfMessageBottom)
+    TextView tvTimeOfNewBottom;
     @BindView(R.id.wrap)
     RelativeLayout wrap;
 
