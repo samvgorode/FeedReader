@@ -16,14 +16,14 @@
         android:id="@+id/btnAbort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/abort_deleting"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:visibility="gone"
         android:clickable="true"
+        android:onClick="cancelDeleting"
+        android:text="@string/abort_deleting"
         android:theme="@style/Widget.AppCompat.ActionButton"
         android:background="@color/colorRemoveItem"
-        android:onClick="cancelDeleting"
+        android:visibility="gone"
         android:layout_marginBottom="20dp"/>
 
 

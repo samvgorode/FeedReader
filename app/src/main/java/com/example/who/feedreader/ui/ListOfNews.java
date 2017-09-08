@@ -1,6 +1,7 @@
 package com.example.who.feedreader.ui;
 
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,7 +43,6 @@ public class ListOfNews extends AppCompatActivity implements IlistOfNewsView {
     public Button btnAbort;
 
     private ListOfNewsAdapter adapter;
-    private ListOfNewsPresenter presenter;
     private Runnable runnable;
     private Handler handler = new Handler();
 
@@ -52,7 +52,7 @@ public class ListOfNews extends AppCompatActivity implements IlistOfNewsView {
         setContentView(R.layout.activity_list_of_news_titles);
         ButterKnife.bind(this);
         initHawk();
-        presenter = new ListOfNewsPresenter(ListOfNews.this, this);
+        new ListOfNewsPresenter(ListOfNews.this, this);
     }
 
     private void initHawk() {
