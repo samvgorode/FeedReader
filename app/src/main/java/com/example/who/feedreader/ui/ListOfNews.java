@@ -28,17 +28,21 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 
 import static com.example.who.feedreader.global.Constants.FIRST_MAP_OF_ITEMS;
 import static com.example.who.feedreader.global.Constants.ITEMS_DELETED;
 
 public class ListOfNews extends AppCompatActivity implements IlistOfNewsView {
 
+
+    @BindView(R.id.rvListOfNews)
+    public RecyclerView rvListOfNews;
+    @BindView(R.id.btnAbort)
+    public Button btnAbort;
+
     private ListOfNewsAdapter adapter;
     private ListOfNewsPresenter presenter;
-    private RecyclerView rvListOfNews;
-    private Button btnAbort;
     private Runnable runnable;
     private Handler handler = new Handler();
 
@@ -49,10 +53,6 @@ public class ListOfNews extends AppCompatActivity implements IlistOfNewsView {
         ButterKnife.bind(this);
         initHawk();
         presenter = new ListOfNewsPresenter(ListOfNews.this, this);
-        rvListOfNews = (RecyclerView) findViewById(R.id.rvListOfNews);
-        btnAbort = (Button) findViewById(R.id.btnAbort);
-
-
     }
 
     private void initHawk() {

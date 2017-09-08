@@ -131,7 +131,7 @@ public class ListOfNewsPresenter {
         }
     }
 
-    public static String[] extractLinks(String text) {
+    private static String[] extractLinks(String text) {
         List<String> links = new ArrayList<String>();
         Matcher m = Patterns.WEB_URL.matcher(text);
         while (m.find()) {
